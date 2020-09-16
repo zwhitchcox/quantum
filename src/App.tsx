@@ -13,7 +13,9 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Learn Quantum Physics</h1>
+        <Link to="/">
+          <h1>Learn Quantum Physics</h1>
+        </Link>
       </header>
       <div className="App-body">
         <main>
