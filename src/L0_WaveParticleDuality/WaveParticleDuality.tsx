@@ -1,6 +1,8 @@
 import React from 'react'
 import Both from './Both';
 import Particles from './Particles';
+import Water from './Water';
+import "./WaveParticleDuality.scss"
 
 const WaveParticleDuality = () => {
   return (
@@ -15,10 +17,9 @@ const WaveParticleDuality = () => {
       </p>
       <Particles />
       <p>
-        Waves are a bit more complicated. A wave is a periodic disturbance in some medium. For instance in water, waves move the water up and down. But the wave isn't the water. The wave is the disturbance in the water.
+        Waves are a bit more complicated. A wave is a periodic disturbance in some medium. For instance in water, waves move the water up and down. But the wave isn't the water. The wave is the disturbance of the water.
       </p>
-      <p>
-      </p>
+      <Water />
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import { NORD } from '../constants'
 import React, { useEffect, useRef, useState } from 'react'
 
-const Both = () => {
-  let wave, ctx, theta, canvas;
+const Water = () => {
+  let wave, ctx, canvas;
+  let prevTime = 0;
+
   const canvasRef:any = useRef()
   const requestRef:any = useRef()
   const previousTimeRef:any = useRef()
@@ -15,27 +17,26 @@ const Both = () => {
   //   requestRef.current = requestAnimationFrame(animate)
   // }
 
-  const animate = () => {
+
+  const animate = (time) => {
+    const deltaSeconds = (time - prevTime) / 1000
+    const distancePerSecond = 400;
+    const xOffset = deltaSeconds*distancePerSecond
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.strokeStyle= NORD.blue1
     ctx.lineWidth = 3
+    const frequency = 40
 
     // draw wave
     ctx.beginPath()
-    ctx.moveTo(0, canvas.clientHeight / 2)
-    for (let i = 0; i < canvas.clientWidth / 2; i++) {
-        const x = i
-        const y = wave.y + Math.sin(i *200000) * wave.amplitude
-        ctx.lineTo(x, y)
+    let x = 0;
+    while (x <= canvas.clientWidth*4) {
+      const y = canvas.clientHeight/2 + 80 * Math.sin((x+xOffset)/frequency);
+      ctx.lineTo(x, y)
+      x++
     }
     ctx.stroke()
-
-    // draw particle
-    ctx.beginPath()
-    ctx.fillStyle= NORD.blue1
-    ctx.ellipse(canvas.clientWidth / 4 * 3, canvas.clientHeight / 2, 2, 2, 0, 0, Math.PI * 2)
-    ctx.stroke()
-    // requestAnimationFrame(animate)
+    requestAnimationFrame(animate)
   }
 
   // useEffect(() => {
@@ -55,13 +56,12 @@ const Both = () => {
       amplitude: canvas.clientHeight / 4,
       speed: .01
     }
-    theta = 0;
     requestAnimationFrame(animate)
   }, [canvasRef])
 
   return (
-    <canvas width="944" height="300" ref={canvasRef} className="both" />
+    <canvas width="944" height="300" ref={canvasRef} className="water" />
   )
 }
 
-export default Both
+export default Water
