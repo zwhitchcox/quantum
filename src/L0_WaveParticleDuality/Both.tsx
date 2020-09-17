@@ -2,9 +2,8 @@ import { NORD } from '../constants'
 import React, { useEffect, useRef, useState } from 'react'
 import './Waves.scss'
 
-const Waves = () => {
+const Both = () => {
   let wave, ctx, theta, canvas;
-  let step = 2;
   const canvasRef:any = useRef()
   const requestRef:any = useRef()
   const previousTimeRef:any = useRef()
@@ -20,16 +19,23 @@ const Waves = () => {
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.strokeStyle= NORD.blue1
-    ctx.lineWidth = 1
+    ctx.lineWidth = 3
+
+    // draw wave
     ctx.beginPath()
-    ctx.stroke()
-    for (let i = 0; i < canvas.clientWidth / 2; i+= step) {
-        ctx.beginPath()
+    ctx.moveTo(0, canvas.clientHeight / 2)
+    for (let i = 0; i < canvas.clientWidth / 2; i++) {
         const x = i
         const y = wave.y + Math.sin(i *200000) * wave.amplitude
-        ctx.ellipse(x, y, 2, 2, 0, 0, 2 * Math.PI)
-        ctx.stroke()
+        ctx.lineTo(x, y)
     }
+    ctx.stroke()
+
+    // draw particle
+    ctx.beginPath()
+    ctx.fillStyle= NORD.blue1
+    ctx.ellipse(canvas.clientWidth / 4 * 3, canvas.clientHeight / 2, 2, 2, 0, 0, Math.PI * 2)
+    ctx.stroke()
     // requestAnimationFrame(animate)
   }
 
@@ -47,7 +53,7 @@ const Waves = () => {
     wave = {
       y: canvas.clientHeight / 2,
       length: 200000,
-      amplitude: canvas.clientHeight / 6,
+      amplitude: canvas.clientHeight / 4,
       speed: .01
     }
     theta = 0;
@@ -55,8 +61,8 @@ const Waves = () => {
   }, [canvasRef])
 
   return (
-    <canvas width="944" height="300" ref={canvasRef} className="waves" />
+    <canvas width="944" height="300" ref={canvasRef} className="both" />
   )
 }
 
-export default Waves
+export default Both

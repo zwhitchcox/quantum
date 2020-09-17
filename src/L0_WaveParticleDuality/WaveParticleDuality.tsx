@@ -1,14 +1,24 @@
 import React from 'react'
-import Waves from './Waves';
+import Both from './Both';
+import Particles from './Particles';
 
 const WaveParticleDuality = () => {
   return (
     <div>
-      <h2>Wave Particle Duality</h2>
+      <h2>Wave-Particle Duality</h2>
       <p>
-        In order to understand wave-particle duality, we need to first understand what we mean by "wave".
+        In order to understand wave-particle duality, we need to first understand what we mean by "waves" and "particles".
       </p>
-      <Waves />
+      <Both />
+      <p>
+        Particles are exactly what we think of when we think of "classical" objects. They bounce of things, run into each other, and are solid, physical objects.
+      </p>
+      <Particles />
+      <p>
+        Waves are a bit more complicated. A wave is a periodic disturbance in some medium. For instance in water, waves move the water up and down. But the wave isn't the water. The wave is the disturbance in the water.
+      </p>
+      <p>
+      </p>
     </div>
   )
 }
