@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import WaveParticleDuality from './L0_WaveParticleDuality/WaveParticleDuality';
+import Three from './three/Three';
 
 const navLinks = [
   {
@@ -12,12 +13,13 @@ const navLinks = [
 function App() {
   return (
     <div className="App">
-      <header>
+      <Three />
+      {/* <header>
         <Link to="/">
           <h1>Learn Quantum Physics</h1>
         </Link>
-      </header>
-      <div className="App-body">
+      </header> */}
+      {/* <div className="App-body">
         <main>
           <Switch>
             <Route path="/wave-particle-duality">
@@ -39,8 +41,7 @@ function App() {
             ))}
           </ul>
         </nav>
-      </div>
-      <footer>footer</footer>
+      </div> */}
     </div>
   );
 }

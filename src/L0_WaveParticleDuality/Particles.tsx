@@ -10,7 +10,7 @@ const Particles = () => {
 
 
   const Cd = 0.47;  // Dimensionless
-  const rho = 1.22; // kg / m^3
+  const rho = 1.22; // kg / m^3 <- density
   const ag = 9.81;  // m / s^2
   const mouse = {x: 0, y: 0, isDown: false};
 
